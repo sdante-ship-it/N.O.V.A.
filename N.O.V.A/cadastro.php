@@ -1,0 +1,57 @@
+<?php include 'patterns/header.php'; ?>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card shadow-sm">
+
+                    <div class="card-header text-center py-3" style="background-color:#020101;">
+                        <h3 class="mb-0" style="color:#4f96a0;">CADASTRO</h3>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5">
+
+                        <form action="backend/auth/salvar.php" method="post" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="login" class="form-label">Nome de login</label>
+                                <input type="text" class="form-control" id="login" name="login" required menlength="3">
+                                <div class="invalid-feedback">A senha precisa ter pelo menos 6 caracteres</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha" minlength="6" required>
+                                <div class="invalid-feedback">A senha precisa ter pelo menos 6 caracteres.</div>
+                                </div>
+                            <div class="mb-4">
+                                <label class="form-label d-block">Tipo de acesso</label>
+                                <div class="btn-group w-100" role="group">
+                                <input type="radio" class="btn-check" name="type" id="usuario" value="usuario" checked>
+                                <label class="btn btn-outline-primary" for="usuario">Usuário</label>
+                                <input type="radio" class="btn-check" name="type" id="colaborador" value="colaborador">
+                                <label class="btn btn-outline-primary" for="colaborador">Colaborador</label>
+                                <input type="radio" class="btn-check" name="type" id="adm" value="adm">
+                                <label class="btn btn-outline-primary" for="adm">ADM</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                            </div>
+                        </form>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const senha = document.getElementById('senha');
+                const confirmar = document.getElementById('confirmar_senha');
+                    if (senha.value !== confirmar.value) {
+                        confirmar.setCustomValidity('As senhas não coincidem');
+                        } else {
+                        confirmar.setCustomValidity('');
+                                }
+                            })
+   </script>
+<?php include 'patterns/footer.php'; ?>
