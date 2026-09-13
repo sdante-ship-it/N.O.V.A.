@@ -11,7 +11,7 @@
 
                     <div class="card-body p-4 p-md-5">
 
-                        <form action="autenticar.php" method="post" class="needs-validation" novalidate>
+                        <form action="backend/auth/auth_login.php" method="post" class="needs-validation" novalidate>
 
                            
                             <div class="mb-3">
@@ -29,21 +29,6 @@
                                     A senha precisa ter pelo menos 6 caracteres.
                                 </div>
                             </div>
-                             <div class="mb-4">
-                                <label class="form-label d-block">Tipo de acesso</label>
-
-                                <div class="btn-group w-100" role="group" aria-label="Tipo de acesso">
-                                    <input type="radio" class="btn-check" name="type" id="usuario" value="usuario" autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="usuario">Usuário</label>
-
-                                    <input type="radio" class="btn-check" name="type" id="colaborador" value="colaborador" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="colaborador">Colaborador</label>
-
-                                    <input type="radio" class="btn-check" name="type" id="adm" value="adm" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="adm">ADM</label>
-                                </div>
-                            </div>
-
 
                             <button type="submit" class="btn btn-primary w-100">Entrar</button>
 

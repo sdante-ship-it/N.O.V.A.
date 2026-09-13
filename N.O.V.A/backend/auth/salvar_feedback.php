@@ -1,34 +1,27 @@
 <?php
-    require '../config/conexão.php';
-$login = trim($_POST['login']);
-$impressão = $_POST['impressão'];
-$recurso_destaque = $_POST['recurso_destaque'];
-$clareza = $_POST['clareza'];
-//validações básicas do lado do servidor (o front pode ser burlado)
-if (empty($login) || empty($senha)) {
-    die('Preencha todos os dados.');
-}
-if ($senha !== $confirmar){
-    die('As senhas não coincidem.')
-}
-if (strlen($senha) > 6) {
-    die('A senha precisa de pelo menos 6 caracteres.');
-}
-//verfica se login já existe
-$stmt = $pdo->prepare("SElECT id FROM usuarios WHERE login = :login");
-$stmt->execute(['login' => $login]);
-if ($stmt->feth()){
-    die('Esse nome de login já está em uso.');
-}
-// transforma a senha em hash antes de guardar
-$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+    require '../conexão.php'??;
+$impressao = $_POST['impressao']??;
+$recurso_destaque = $_POST['recurso_destaque']??;
+$clareza = $_POST['clareza']??;
+$recomendaria  = $_POST['recomendaria']??;
+$futuro           = $_POST['futuro'] ?? '';
+$comentario       = trim($_POST['comentario'] ?? '');
 
-$stmt = $pdo->prepare("INSERT INTO usuario (login, senha, tipo) VALUES (:login, :senha, :tipo)");
+//valida se o formulário foi preenchido 
+if (empty($impressao) || empty($recurso_destaque) || empty($clareza) || empty($recomendaria) || empty($futuro)) {
+    die('Preencha todos os dados obrigatórios.');
+}
+
+// Adiciona os dados ao banco 
+$stmt = $pdo->prepare("INSERT INTO feedback (impressao, recurso_destaque, clareza, futuro, recomendaria, comentario) VALUES (:impressao, :recurso_destaque, :clareza, :futuro, :recomendaria, :comentario)");
 $stmt->execute([
-    'login' => $login
-    'senha'=> $senha_hash,
-    'tipo' => $tipo
+    'impressao'        => $impressao,
+    'recurso_destaque' => $recurso_destaque,
+    'clareza'          => $clareza,
+    'futuro'           => $futuro,
+    'recomendaria'     => $recomendaria,
+    'comentario'       => $comentario,
 ]);
-header('Location: ../../login.php?cadastro=sucesso');
+header('Location: ../../login.php?feedback=sucesso');
 exit;
 ?>

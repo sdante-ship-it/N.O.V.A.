@@ -1,18 +1,27 @@
 <?php
-    require '../config/conexão.php';
-$name = trim($_POST['name']);
-$descricao = $_POST['descricao'];
-$data_registro = $_POST['data_registro'];
-//validações básicas do lado do servidor (o front pode ser burlado)
-if (empty($name) || empty($data_registro)) {
+session_start();
+require '../conexao.php';
+
+// Bloqueia quem não está logado — isso já é a proteção de sessão que vocês tinham planejado pra depois
+if (empty($_SESSION['usuario_id'])) {
+    header('Location: ../../login.php');
+    exit;
+}
+
+$titulo    = trim($_POST['titulo'] ?? '');
+$conteudo  = trim($_POST['conteudo'] ?? '');
+$usuario_id = $_SESSION['usuario_id'];
+
+if (empty($titulo) || empty($conteudo)) {
     die('Preencha todos os dados.');
 }
-//verfica se login já existe
-$stmt = $pdo->prepare("SElECT id FROM usuarios WHERE name = :name");
-$stmt->execute(['name' => $name]);
-if ($stmt->feth()){
-    die('Esse nome de login não existe.');
-}
-header('Location: ../../login.php?cadastro=sucesso');
+
+$stmt = $pdo->prepare("INSERT INTO diario_bordo (usuario_id, titulo, conteudo) VALUES (:usuario_id, :titulo, :conteudo)");
+$stmt->execute([
+    'usuario_id' => $usuario_id,
+    'titulo'     => $titulo,
+    'conteudo'   => $conteudo,
+]);
+
+header('Location: ../../dsp_diario.php?registro=sucesso');
 exit;
-?>

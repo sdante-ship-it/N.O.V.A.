@@ -11,30 +11,15 @@
 
                     <div class="card-body p-4 p-md-5">
 
-                        <form action="salvar_diario.php" method="post" class="needs-validation" novalidate>
+                        <form action="backend/auth/salvar_diario.php" method="post" class="needs-validation" novalidate>
 
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Nome de login</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                                <div class="invalid-feedback">
-                                    Digite seu nome de login.
-                                </div>
+                           <div class="mb-3">
+                                <label for="titulo" class="form-label">Título</label>
+                                <input type="text" class="form-control" id="titulo" name="titulo" required>
                             </div>
-
                             <div class="mb-3">
-                                <label for="descricao" class="form-label">Descrição do que foi feito</label>
-                                <textarea class="form-control" id="descricao" name="descricao" rows="3" required></textarea>
-                                <div class="invalid-feedback">
-                                    Descreva o que foi feito.
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="data_registro" class="form-label">Data</label>
-                                <input type="date" class="form-control" id="data_registro" name="data_registro" required>
-                                <div class="invalid-feedback">
-                                    Selecione a data.
-                                </div>
+                                <label for="conteudo" class="form-label">O que foi feito</label>
+                                <textarea class="form-control" id="conteudo" name="conteudo" rows="3" required></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100">Salvar registro</button>

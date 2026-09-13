@@ -70,16 +70,21 @@
     <div class="nav d-flex align-items-center">
         <div class="logo">
             <img src="/N.O.V.A/patterns/logo.png" alt="Logo do Site" height="100">
-        </div>
-        <ul class="nav ms-auto">
+                <ul class="nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                <a class="nav-link active" aria-current="page" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">LOGIN</a>
+                <a class="nav-link" href="login.php">LOGIN</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">FEEDBACK</a>
+                <a class="nav-link" href="feedback_quest.php">FEEDBACK</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cadastro.php">CADASTRO</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dsp_diario.php">DIÁRIO DE BORDO</a>
             </li>
         </ul>
     </div>

@@ -11,16 +11,18 @@
 
                     <div class="card-body p-4 p-md-5">
 
-                        <form action="backend/auth/salvar.php" method="post" class="needs-validation" novalidate>
+                        <form action="backend/auth/salvar_cadastro.php" method="post" class="needs-validation" novalidate>
                             <div class="mb-3">
-                                <label for="login" class="form-label">Nome de login</label>
-                                <input type="text" class="form-control" id="login" name="login" required menlength="3">
-                                <div class="invalid-feedback">A senha precisa ter pelo menos 6 caracteres</div>
+                                <label for="nome" class="form-label">Nome completo</label>
+                                <input type="text" class="form-control" id="nome" name="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="mb-3">
                                 <label for="senha" class="form-label">Senha</label>
-                                <input type="password" class="form-control" id="senha" name="senha" minlength="6" required>
-                                <div class="invalid-feedback">A senha precisa ter pelo menos 6 caracteres.</div>
+                                <input type="password" class="form-control" id="senha" name="senha" required>
                                 </div>
                             <div class="mb-4">
                                 <label class="form-label d-block">Tipo de acesso</label>
